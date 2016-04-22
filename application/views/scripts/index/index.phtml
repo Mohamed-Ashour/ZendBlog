@@ -1,0 +1,29 @@
+<h1>
+	Blogy <small>Simple Micro Blog</small>
+	<a class="right btn btn-primary " href="<?php echo $this->baseUrl()?>/posts/add"> Add Post </a>
+</h1><br>
+<div class="row">
+		<div class="col-md-12">
+
+				<?php
+					if($this->posts) {
+						for($i=0; $i< count($this->posts); $i++) {
+							echo "<div class='jumbotron well'>";
+							echo "<h3>". $this->posts[$i]['title'] ."</h3><small>". $this->posts[$i]['date'] ."</small><br><br>";
+
+							if ( strlen($this->posts[$i]['body']) > 310) {
+								echo "<p><small>". substr($this->posts[$i]['body'],0, 320 ) ." ... </small></p>";
+							}
+							else{ echo "<p>". $this->posts[$i]['body'] ."</p>"; }
+
+							echo "<a class='btn btn-info active right' href='".$this->baseUrl()."/posts/show/id/". $this->posts[$i]['id'] ."'>Read more</span>";
+							echo "<a class='btn btn-danger active right'>".  $this->posts[$i]['comments'] ." comments</a>";
+							echo "</div>";
+						}
+					}
+
+				?>
+
+
+		</div>
+	</div>

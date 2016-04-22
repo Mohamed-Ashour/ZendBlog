@@ -1,0 +1,33 @@
+<br /><br />
+<div id="view-content">
+	<h1>Users</h1>
+</div>
+
+
+<a href="<?php echo $this->baseUrl()?>/users/add"> Add User </a>
+<br><br>
+
+<table class="table">
+	<thead>
+		<th>id</th>
+		<th>name</th>
+		<th>email</th>
+		<th>action</th>
+	</thead>
+
+<?php
+	if($this->users) {
+		for($i=1; $i< count($this->users); $i++) {
+			echo "<tr>";
+			echo "<td>". $this->users[$i]['id'] ."</td>";
+			echo "<td>". $this->users[$i]['name'] ."</td>";
+			echo "<td>". $this->users[$i]['email'] ."</td>";
+			echo "<td> <a class='btn btn-info' href='". $this->baseUrl() ."/users/edit/id/". $this->users[$i]['id'] ."' > Edit </a> ";
+			echo "<a class='btn btn-danger' href='". $this->baseUrl() ."/users/delete/id/". $this->users[$i]['id'] ."' >Delete</a></td>";
+			echo "<tr>";
+		}
+	}
+
+?>
+
+</table>

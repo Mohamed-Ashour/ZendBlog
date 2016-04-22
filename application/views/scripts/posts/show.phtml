@@ -1,0 +1,28 @@
+
+<div id="view-content">
+	<h1><?php echo $this->post['title']; ?></h1><br>
+	<p>
+		<?php echo $this->post['body']; ?>
+		<h2><small class='right'>By: <?php echo $this->post['author']; ?></small></h2>
+	</p><br><hr>
+
+		<?php echo $this->form; ?>
+
+
+	<?php
+
+	if($this->comments) {
+		for ( $i=0; $i< count($this->comments); $i++ ) {
+			echo "<div class='well'>";
+			echo "<p><strong>". $this->comments[$i]['commenter'] ." :</strong></p>";
+			echo "<p class='left-margin'>". $this->comments[$i]['body'] ."</p>";
+			echo "";
+			echo "<p> <a class='btn btn-info btn-sm' href='". $this->baseUrl() ."/comments/edit/id/". $this->comments[$i]['id'] ."' > Edit </a> ";
+			echo "<a class='btn btn-danger btn-sm' href='". $this->baseUrl() ."/comments/delete/id/". $this->comments[$i]['id'] ."' > Delete </a> <small class='right'>". $this->comments[$i]['date'] ."</small></p>";
+			echo "</div>";
+
+		}
+	}
+
+	?>
+</div>

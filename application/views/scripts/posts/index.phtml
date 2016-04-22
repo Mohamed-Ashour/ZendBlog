@@ -1,0 +1,35 @@
+<br /><br />
+
+<a class='btn btn-info' href="<?php echo $this->baseUrl()?>/posts/add"> Add Post </a>
+<br><br>
+<table class="table">
+	<thead>
+		<th>id</th>
+		<th>title</th>
+		<th>body</th>
+		<th>date</th>
+		<th>comments</th>
+		<th>action</th>
+	</thead>
+
+<?php
+	if($this->posts) {
+		for($i=0; $i< count($this->posts); $i++) {
+			echo "<tr>";
+			echo "<td>". $this->posts[$i]['id'] ."</td>";
+			echo "<td>". $this->posts[$i]['title'] ."</td>";
+			if ( strlen($this->posts[$i]['body']) > 50) {
+				echo "<td>". substr($this->posts[$i]['body'],0, 50 ) ." ... </td>";
+			}
+			else{ echo "<td>". $this->posts[$i]['body'] ."</td>"; }
+			echo "<td>". $this->posts[$i]['date'] ."</td>";
+			echo "<td> <a class='btn btn-success' href='". $this->baseUrl() ."/comments/post-comments/post/". $this->posts[$i]['id'] ."' > ". $this->posts[$i]['comments'] . " Comments </a> </td>";
+			echo "<td> <a class='btn btn-info' href='". $this->baseUrl() ."/posts/edit/id/". $this->posts[$i]['id'] ."' > Edit </a> ";
+			echo "<a class='btn btn-danger' href='". $this->baseUrl() ."/posts/delete/id/". $this->posts[$i]['id'] ."' > Delete </a></td>";
+			echo "<tr>";
+		}
+	}
+
+?>
+
+</table>

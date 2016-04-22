@@ -1,0 +1,33 @@
+<br /><br />
+<div id="view-content">
+
+	
+	<br><br>
+	<table class="table">
+		<thead>
+			<th>id</th>
+			<th>body</th>
+			<th>date</th>
+			<th>action</th>
+		</thead>
+
+	<?php
+		if($this->comments) {
+			for($i=0; $i< count($this->comments); $i++) {
+				echo "<tr>";
+				echo "<td>". $this->comments[$i]['id'] ."</td>";
+				echo "<td>". $this->comments[$i]['body'] ."</td>";
+				echo "<td>". $this->comments[$i]['date'] ."</td>";
+				echo "<td> <a class='btn btn-info' href='". $this->baseUrl() ."/comments/edit/id/". $this->comments[$i]['id'] ."' > Edit </a> ";
+				echo "<a class='btn btn-danger' href='". $this->baseUrl() ."/comments/delete/id/". $this->comments[$i]['id'] ."' > Delete </a></td>";
+				echo "<tr>";
+			}
+		}
+
+	?>
+
+	</table>
+
+
+
+</div>
